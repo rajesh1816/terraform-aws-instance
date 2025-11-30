@@ -5,14 +5,14 @@ variable "ami_id" {
 }
 
 variable "instance_type" {
-  type        = string
-  default     = "t2.micro"
-  description = "size of the instance"
+    default = "t3.micro"
+    type = string
+    description = "Instance size"
 
-  validation {
-    condition     = var.instance_type in ["t3.micro", "t3.small", "t3.medium"]
-    error_message = "Instance type must be t3.micro, t3.small, or t3.medium."
-  }
+    validation {
+        condition     = contains(["t3.micro", "t3.small", "t3.medium"], var.instance_type)
+        error_message = "Valid values for instance_type are: t3.micro, t3.small, t3.medium"
+    } 
 }
 
 #mandatory to give sg_ids
