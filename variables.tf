@@ -8,6 +8,11 @@ variable "instance_type" {
   type        = string
   default     = "t2.micro"
   description = "size of the instance"
+
+  validation {
+    condition     = var.instance_type in ["t3.micro", "t3.small", "t3.medium"]
+    error_message = "Invalid instance_type. Allowed values: t3.micro, t3.small, t3.medium."
+  }
 }
 
 #mandatory to give sg_ids
