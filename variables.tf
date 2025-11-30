@@ -10,8 +10,8 @@ variable "instance_type" {
   description = "size of the instance"
 
   validation {
-    condition     = var.instance_type in ["t3.micro", "t3.small", "t3.medium"]
-    error_message = "Invalid instance_type. Allowed values: t3.micro, t3.small, t3.medium."
+    condition     = contains(var.instance_type in ["t3.micro", "t3.small", "t3.medium"])
+    error_message = "Allowed values are: t3.micro, t3.small, t3.medium."
   }
 }
 
